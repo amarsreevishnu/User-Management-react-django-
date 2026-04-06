@@ -1,0 +1,38 @@
+# ----------------------
+# Django (Backend)
+# ----------------------
+__pycache__/
+*.py[cod]
+*.sqlite3
+db.sqlite3
+/media/
+staticfiles/
+
+# Virtual environment
+venv/
+env/
+.venv/
+
+# Django settings
+*.log
+
+# ----------------------
+# React (Frontend)
+# ----------------------
+node_modules/
+build/
+dist/
+
+# ----------------------
+# Environment variables
+# ----------------------
+.env
+.env.*
+
+# ----------------------
+# OS / Editor
+# ----------------------
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

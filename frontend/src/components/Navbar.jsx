@@ -7,6 +7,8 @@ const Navbar = () => {
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
 
+  
+  
   const handleLogout = () => {
     dispatch(logout());
     navigate("/");

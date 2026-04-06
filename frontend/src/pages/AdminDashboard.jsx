@@ -10,10 +10,7 @@ import {
 import toast from "react-hot-toast";
 
 const AdminDashboard = () => {
-  const [users, setUsers] = useState([]);
-  
-  const [userCount,setUsercount]= useState("")
-  
+  const [users, setUsers] = useState([]);  
   const [search, setSearch] = useState("");
   const [editingUser, setEditingUser] = useState(null);
 
@@ -34,6 +31,9 @@ const AdminDashboard = () => {
     try {
       const data = await getAllUsersAPI(search);
       setUsers(data);
+      setUsercount(data.length);
+      
+      
     } catch (error) {
       console.error("Error fetching users", error);
     }
@@ -41,8 +41,9 @@ const AdminDashboard = () => {
 
   useEffect(() => {
     fetchUsers();
+    
   }, [search]);
-
+  
   const handleDelete = async (id) => {
   if (!window.confirm("Are you sure you want to delete this user?")) return;
 
@@ -124,8 +125,7 @@ const AdminDashboard = () => {
     toast.error("Update failed");
   }
 
-  setUsercount(users.length())
-  console.log(userCount );
+  
   
 
 };
@@ -174,7 +174,16 @@ const AdminDashboard = () => {
               onChange={handleCreateChange}
               required
             />
-            <label className="flex items-center gap-2">
+            <input
+              type="password"
+              name="password"
+              placeholder="Confirm-password"
+              className="p-2 border rounded"
+              value={formData.password}
+              onChange={handleCreateChange}
+              required
+            />
+            {/* <label className="flex items-center gap-2">
               <input
                 type="checkbox"
                 name="is_admin"
@@ -182,7 +191,7 @@ const AdminDashboard = () => {
                 onChange={handleCreateChange}
               />
               Admin
-            </label>
+            </label> */}
 
             <button className="md:col-span-4 bg-green-600 text-white p-2 rounded">
               Create User
